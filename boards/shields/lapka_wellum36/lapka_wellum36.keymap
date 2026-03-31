@@ -29,7 +29,7 @@
 #define NSPC LC(LG(RIGHT))
 #define PSPC LC(LG(LEFT))
 
-// custom implementation of modified callum-mods,
+// custom implementation of modifiedо callum-mods,
 // which can be released on second keypress
 // and also work with swapper and/or tabber
 
