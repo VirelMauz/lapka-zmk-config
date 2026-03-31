@@ -174,6 +174,14 @@
                 &kp LALT
                 &kp LGUI
         )
+
+        // Новый макрос: Control + Shift + 3, затем Caps Lock
+        MACRO_NO_PARAM(caps_combo,
+            &macro_press &kp LCTRL &kp LSHIFT &kp N3
+            &macro_pause_for_release
+            &macro_release &kp LCTRL &kp LSHIFT &kp N3
+            &macro_tap &kp CAPS
+        )
     };
 
     conditional_layers {
@@ -194,7 +202,7 @@
 _ Q          _ W          _ E          _ R         _ T             _ Y          _ U          _ I          _ O          _ P
 _ A          _ S          _ D          _ F         _ G             _ H          _ J          _ K          _ L          _ SEMI
 _ Z          _ X          _ C          _ V         _ B             _ N          _ M          _ COMMA      _ DOT        _ FSLH
-                          _ CAPS       _ SPACE     &la NAV         &la SYM      _ LSFT       _ RALT
+                          &caps_combo   _ SPACE     &la NAV         &la SYM      _ LSFT       _ RALT
             >;
         };
 
