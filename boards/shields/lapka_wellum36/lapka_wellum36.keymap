@@ -57,7 +57,7 @@
         compatible = "zmk,behavior-sticky-key"; \
         #binding-cells = <1>; \
         bindings = <BIND>; \
-        release-after-ms = <MAX_TIMER>; \
+        release-after-ms = <600000>; \
         ignore-modifiers; \
     };
 
