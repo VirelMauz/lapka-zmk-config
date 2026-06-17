@@ -23,23 +23,23 @@
     ;
 };
 
-/* Включение шины I2C для OLED экрана 128x64 (SSD1306) */
-&i2c0 {
+/* Включение шины I2C для OLED экрана 128x64 на контроллере SH1106 */
+&pro_micro_i2c {
     status = "okay";
-    clock-frequency = <100000>; /* Снижаем скорость до 100 кГц для стабильной передачи данных и устранения артефактов */
     
-    oled: oled@3c {
-        compatible = "solomon,ssd1306fb";
+    oled: sh1106@3c {
+        compatible = "sinowealth,sh1106";
         reg = <0x3c>;
-        width = <128>;
+        width = <129>;              /* Внутренняя ширина SH1106 */
         height = <64>;
-        segment-offset = <0>;
+        segment-offset = <1>;       /* Сдвиг на 1 пиксель для корректного отображения 128 видимых пикселей */
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <63>; /* Строго 63 для высоты 64 пикселя (height - 1) */
+        multiplex-ratio = <63>;     /* 63 для высоты 64 (height - 1) */
+        segment-remap;
+        com-invdir;
+        inversion-on;
         prechargep = <0x22>;
-        /* Флаги segment-remap, com-invdir и inversion-on удалены, 
-           так как на многих экранах они являются причиной "снега" и артефактов */
     };
 };
 
