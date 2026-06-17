@@ -26,20 +26,20 @@
 /* Включение шины I2C для OLED экрана 128x64 (SSD1306) */
 &i2c0 {
     status = "okay";
+    clock-frequency = <100000>; /* Снижаем скорость до 100 кГц для стабильной передачи данных и устранения артефактов */
     
     oled: oled@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
-        height = <64>;               /* ИЗМЕНЕНО: высота 64 пикселя */
+        height = <64>;
         segment-offset = <0>;
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <63>;      /* ИЗМЕНЕНО: 63 для высоты 64 */
-        segment-remap;
-        com-invdir;
-        inversion-on;
+        multiplex-ratio = <63>; /* Строго 63 для высоты 64 пикселя (height - 1) */
         prechargep = <0x22>;
+        /* Флаги segment-remap, com-invdir и inversion-on удалены, 
+           так как на многих экранах они являются причиной "снега" и артефактов */
     };
 };
 
