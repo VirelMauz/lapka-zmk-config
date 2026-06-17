@@ -43,9 +43,9 @@
     };
 };
 
-/* Безопасное добавление свойства display в узел chosen */
+/* Правильное указание дисплея в узле chosen для Zephyr/ZMK */
 / {
     chosen {
-        zmk,display = &oled;
+        zephyr,display = &oled;
     };
 };
