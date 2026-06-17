@@ -43,7 +43,9 @@
     };
 };
 
-/* Связывание дисплея с системой ZMK */
-&chosen {
-    zmk,display = &oled;
+/* Безопасное добавление свойства display в узел chosen */
+/ {
+    chosen {
+        zmk,display = &oled;
+    };
 };
