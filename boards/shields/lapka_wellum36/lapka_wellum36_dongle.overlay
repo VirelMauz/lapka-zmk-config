@@ -23,20 +23,19 @@
     ;
 };
 
-/* Включение шины I2C для OLED экрана 128x64 на контроллере SH1106 */
+/* Включение шины I2C для OLED экрана SH1106 128x64 */
 &pro_micro_i2c {
     status = "okay";
-    clock-frequency = <400000>; /* 400 кГц для быстрой и стабильной передачи данных */
     
     oled: sh1106@3c {
         compatible = "sinowealth,sh1106";
         reg = <0x3c>;
-        width = <129>;              /* Каноничная ширина для SH1106 в ZMK */
+        width = <129>;
         height = <64>;
-        segment-offset = <1>;       /* Сдвиг на 1 пиксель для корректного центрирования */
+        segment-offset = <1>;
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <63>;     /* 63 для высоты 64 (height - 1) */
+        multiplex-ratio = <63>;
         segment-remap;
         com-invdir;
         inversion-on;
