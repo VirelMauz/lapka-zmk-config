@@ -23,7 +23,7 @@
     ;
 };
 
-/* Включение шины I2C для OLED экрана (SSD1306 128x32) */
+/* Включение шины I2C для OLED экрана 128x64 (SSD1306) */
 &i2c0 {
     status = "okay";
     
@@ -31,11 +31,11 @@
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
-        height = <32>;
+        height = <64>;               /* ИЗМЕНЕНО: высота 64 пикселя */
         segment-offset = <0>;
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <31>;
+        multiplex-ratio = <63>;      /* ИЗМЕНЕНО: 63 для высоты 64 */
         segment-remap;
         com-invdir;
         inversion-on;
@@ -43,7 +43,7 @@
     };
 };
 
-/* Безопасное добавление дисплея в узел chosen */
+/* Привязка дисплея к системе */
 / {
     chosen {
         zephyr,display = &oled;
