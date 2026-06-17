@@ -43,10 +43,9 @@
     };
 };
 
-/* Правильное указание дисплея и UART для ZMK Studio в узле chosen */
+/* Безопасное добавление дисплея в узел chosen */
 / {
     chosen {
         zephyr,display = &oled;
-        zmk,studio-rpc-uart = &cdc_acm_uart;
     };
 };
