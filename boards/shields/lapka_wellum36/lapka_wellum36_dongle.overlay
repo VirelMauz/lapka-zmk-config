@@ -31,12 +31,12 @@
     oled: sh1106@3c {
         compatible = "sinowealth,sh1106";
         reg = <0x3c>;
-        width = <132>;              /* КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: полная внутренняя ширина SH1106 */
+        width = <129>;              /* Каноничная ширина для SH1106 в ZMK */
         height = <64>;
-        segment-offset = <2>;       /* Сдвиг на 2 пикселя для центрирования (132 - 128) / 2 */
+        segment-offset = <1>;       /* Сдвиг на 1 пиксель для корректного центрирования */
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <63>;
+        multiplex-ratio = <63>;     /* 63 для высоты 64 (height - 1) */
         segment-remap;
         com-invdir;
         inversion-on;
