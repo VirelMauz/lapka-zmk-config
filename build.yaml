@@ -6,11 +6,11 @@
 #
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: lapka_wellum36_left
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: lapka_wellum36_right
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: lapka_wellum36_dongle
-  - board: nice_nano_v2
+  - board: nice_nano
     shield: settings_reset
