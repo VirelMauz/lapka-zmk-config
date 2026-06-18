@@ -2,22 +2,25 @@
 
 / {
     chosen {
-        zephyr,display = &ssd1306;
+        zephyr,display = &oled;
     };
 };
 
-&i2c0 {
+&pro_micro_i2c {
     status = "okay";
-    clock-frequency = <400000>;
 
-    ssd1306: ssd1306@3c {
-        compatible = "solomon,ssd1306";
+    oled: sh1106@3c {
+        compatible = "sinowealth,sh1106";
         reg = <0x3c>;
-        reset-gpios = <&pro_micro 9 GPIO_ACTIVE_LOW>;
         width = <128>;
         height = <64>;
-        segment-offset = <0>;
+        segment-offset = <2>;
         page-offset = <0>;
         display-offset = <0>;
+        multiplex-ratio = <63>;
+        segment-remap;
+        com-invdir;
+        inversion-on;
+        prechargep = <0x22>;
     };
 };
