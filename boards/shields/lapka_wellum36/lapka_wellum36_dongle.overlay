@@ -25,3 +25,22 @@
 		, <&pro_micro 5  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // LA_NAV
 		;
 };
+
+&i2c0 {
+	status = "okay";
+
+	ssd1306: ssd1306@3c {
+		compatible = "solomon,ssd1306";
+		reg = <0x3c>;
+		reset-gpios = <&pro_micro 9 GPIO_ACTIVE_LOW>; // adjust pin if needed
+		width = <128>;
+		height = <64>;
+		segment-offset = <0>;
+		page-offset = <0>;
+		display-offset = <0>;
+	};
+};
+
+chosen {
+	zmk,display = &ssd1306;
+};
