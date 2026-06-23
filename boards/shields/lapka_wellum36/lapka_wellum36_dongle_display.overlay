@@ -1,9 +1,10 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include "lapka_wellum36_layouts.dtsi"
+#include "lapka_wellum36.dtsi"
 
- / {
+/ {
 	chosen {
-		zmk,physical-layout = &default_layout;
+		zmk,physical-layout = &physical_layout0;   /* ← Исправлено */
 		zmk,kscan = &mock_kscan;
 		zephyr,display = &oled;
 	};
@@ -23,7 +24,7 @@
 	};
 };
 
-/* I2C для OLED — P0.17 SDA, P0.20 SCL */
+/* I2C для OLED (P0.17 SDA, P0.20 SCL) */
 &pro_micro_i2c {
 	status = "okay";
 
