@@ -8,6 +8,11 @@
         zephyr,display = &oled;
     };
 
+    /* Отключаем реальную клавиатурную матрицу для донгла */
+    &kscan {
+        status = "disabled";
+    };
+
     mock_kscan: mock_kscan_0 {
         compatible = "zmk,kscan-mock";
         columns = <0>;
