@@ -11,6 +11,6 @@ include:
   - board: nice_nano_v2
     shield: lapka_wellum36_right
   - board: nice_nano_v2
-    shield: lapka_wellum36_dongle
+    shield: lapka_wellum36_dongle dongle_display
   - board: nice_nano_v2
     shield: settings_reset
