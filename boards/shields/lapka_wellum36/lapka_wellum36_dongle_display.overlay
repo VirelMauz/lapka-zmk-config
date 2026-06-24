@@ -1,67 +1,41 @@
-#include <dt-bindings/zmk/matrix_transform.h>
+#include "lapka_wellum36.dtsi"
+#include "lapka_wellum36_layouts.dtsi"
 
 / {
-	chosen {
-		zmk,physical-layout = &physical_layout0;
-		zmk,kscan = &mock_kscan;
-		zephyr,display = &oled;
-	};
+    chosen {
+        zmk,physical-layout = &physical_layout0;
+        zmk,kscan = &mock_kscan;
+        zephyr,display = &oled;
+    };
 
-	ext_power_ctrl: ext-power {
-		compatible = "zmk,ext-power-generic";
-		label = "EXT_POWER";
-		control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
-		init-delay-ms = <50>;
-	};
+    /* Отключаем реальную клавиатуру для донгла */
+    &kscan0 {
+        status = "disabled";
+    };
 
-	mock_kscan: mock_kscan_0 {
-		compatible = "zmk,kscan-mock";
-		columns = <0>;
-		rows = <0>;
-		events = <0>;
-	};
+    mock_kscan: mock_kscan_0 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
 };
 
 /* OLED SH1106 */
 &pro_micro_i2c {
-	status = "okay";
+    status = "okay";
 
-	oled: sh1106@3c {
-		compatible = "sinowealth,sh1106";
-		reg = <0x3c>;
-		label = "OLED";
-		width = <128>;
-		height = <64>;
-		segment-offset = <2>;
-		page-offset = <0>;
-		display-offset = <0>;
-		multiplex-ratio = <63>;
-		inversion-on;
-		prechargep = <0x22>;
-	};
-};
-&kscan0 {
-	input-gpios
-		= <&pro_micro 1  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Q
-		, <&pro_micro 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // W
-		, <&pro_micro 14 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // E
-		, <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // R
-		, <&pro_micro 21 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // T
-
-		, <&pro_micro 2  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // A
-		, <&pro_micro 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // S
-		, <&pro_micro 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // D
-		, <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // F
-		, <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // G
-
-		, <&pro_micro 0  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // Z
-		, <&pro_micro 3  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // X
-		, <&pro_micro 9  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // C
-		, <&pro_micro 4  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // V
-		, <&pro_micro 6  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // B
-
-		, <&pro_micro 8  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // CAPS
-		, <&pro_micro 7  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // SPACE
-		, <&pro_micro 5  (GPIO_ACTIVE_LOW | GPIO_PULL_UP)> // LA_NAV
-		;
+    oled: sh1106@3c {
+        compatible = "sinowealth,sh1106";
+        reg = <0x3c>;
+        label = "OLED";
+        width = <128>;
+        height = <64>;
+        segment-offset = <2>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <63>;
+        inversion-on;
+        prechargep = <0x22>;
+    };
 };
