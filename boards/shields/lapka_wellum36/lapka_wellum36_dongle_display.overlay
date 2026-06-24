@@ -1,12 +1,11 @@
 #include <dt-bindings/zmk/matrix_transform.h>
-#include "lapka_wellum36_layouts.dtsi"
-#include "lapka_wellum36.dtsi"
+#include "lapka_wellum36_dongle.overlay"
 
 / {
 	chosen {
+		zephyr,display = &oled;
 		zmk,physical-layout = &default_layout;
 		zmk,kscan = &mock_kscan;
-		zephyr,display = &oled;
 	};
 
 	ext_power_ctrl: ext-power {
@@ -24,7 +23,8 @@
 	};
 };
 
-&pro_micro_i2c {
+/* OLED via I2C - change &i2c0 to your dongle's I2C node if needed */
+&i2c0 {
 	status = "okay";
 
 	oled: sh1106@3c {
