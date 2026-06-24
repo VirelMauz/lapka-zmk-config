@@ -3,7 +3,7 @@
 
 / {
     chosen {
-        zmk,physical-layout = &default_layout;
+        zmk,physical-layout = &physical_layout0;
         zmk,kscan = &mock_kscan;
         zephyr,display = &oled;
     };
@@ -16,7 +16,7 @@
     };
 };
 
-/* OLED SH1106 on I2C */
+/* OLED SH1106 */
 &pro_micro_i2c {
     status = "okay";
 
