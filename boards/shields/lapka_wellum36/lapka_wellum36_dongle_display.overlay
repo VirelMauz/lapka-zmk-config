@@ -1,12 +1,12 @@
 #include "lapka_wellum36.dtsi"
 #include "lapka_wellum36_layouts.dtsi"
 
-/ {
-	/chosen {
-    zmk,physical-layout = &default_layout;   // можно оставить, если layout есть
-    zmk,kscan = &mock_kscan;
-    zephyr,display = &oled;
-};
+ / {
+	chosen {
+		zmk,physical-layout = &default_layout;
+		zmk,kscan = &mock_kscan;
+		zephyr,display = &oled;
+	};
 
 	ext_power_ctrl: ext-power {
 		compatible = "zmk,ext-power-generic";
@@ -23,8 +23,7 @@
 	};
 };
 
-// P0.17 (D2) - sda
-// P0.20 (D3) - sck
+/* I2C OLED */
 &pro_micro_i2c {
 	status = "okay";
 
